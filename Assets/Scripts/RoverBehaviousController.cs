@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class RoverBehaviousController : MonoBehaviour
 
     bool canMove = false;
     bool instructionsFinished = false;
-    bool isMoving = false;
+    bool isInstructionRunning = false;
 
     [SerializeField] float moveSpeed = 1f;
 
@@ -31,58 +32,43 @@ public class RoverBehaviousController : MonoBehaviour
         currentDirection = up;
         nextPos = Vector3.forward;
         destination = transform.position;
+        instructionsFinished = false;
+        MoveForward();
     }
 
     void Update()
     {
-        if (!instructionsFinished)
-        {
-            InstructionInput(instructionsList);
-        }
-    }
-
-    public async Task InstructionInput(IEnumerable<string> instructions)
-    {
-        foreach (string instruction in instructions)
-        {
-            if (instruction == "forward")
-            {
-                await MovingForward();
-            }
-            else if (instruction == "finished")
-            {
-                instructionsFinished = true;
-            }
-        }
+            
     }
 
     void MoveForward()
     {
+
         transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * moveSpeed);
-        isMoving = true;
 
-        if (currentDirection == up)
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            nextPos = Vector3.forward;
-            canMove = true;
+            if (currentDirection == up)
+            {
+                nextPos = Vector3.forward;
+                canMove = true;
+            }
+            else if (currentDirection == right)
+            {
+                nextPos = Vector3.right;
+                canMove = true;
+            }
+            else if (currentDirection == left)
+            {
+                nextPos = Vector3.left;
+                canMove = true;
+            }
+            else if (currentDirection == down)
+            {
+                nextPos = Vector3.back;
+                canMove = true;
+            }
         }
-        else if (currentDirection == right)
-        {
-            nextPos = Vector3.right;
-            canMove = true;
-        }
-        else if (currentDirection == left)
-        {
-            nextPos = Vector3.left;
-            canMove = true;
-        }
-        else if (currentDirection == down)
-        {
-            nextPos = Vector3.back;
-            canMove = true;
-        }
-
-
 
         if (Vector3.Distance(destination, transform.position) <= Mathf.Epsilon)
         {
@@ -94,22 +80,12 @@ public class RoverBehaviousController : MonoBehaviour
                     destination = transform.position + nextPos;
                     direction = nextPos;
                     canMove = false;
-                    isMoving = false;
                 }
             }
         }
+
     }
 
-    public async Task<Task> MovingForward()
-    {
-        var nextDestination = destination + nextPos;
-        while (Vector3.Distance(destination, transform.position) >= Mathf.Epsilon)
-        {
-            MoveForward();
-            await
-        }
-        if (Vector3.Distance(destination, transform.position) <= Mathf.Epsilon) return Task.CompletedTask;
-    }
 
     void RotatePositive()
     {
@@ -120,7 +96,7 @@ public class RoverBehaviousController : MonoBehaviour
             canMove = false;
         }
     }
-    void RotateLNegative()
+    void RotateNegative()
     {
         if (Vector3.Distance(destination, transform.position) <= Mathf.Epsilon)
         {
