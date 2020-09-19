@@ -486,7 +486,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529251260}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
@@ -817,7 +817,7 @@ PrefabInstance:
     - target: {fileID: 9137993994132522284, guid: b77597402dadcc344adeec0a17a6a952,
         type: 3}
       propertyPath: m_Shadows.m_Strength
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9137993994132522285, guid: b77597402dadcc344adeec0a17a6a952,
         type: 3}
@@ -882,7 +882,7 @@ PrefabInstance:
     - target: {fileID: 9137993994132522287, guid: b77597402dadcc344adeec0a17a6a952,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b77597402dadcc344adeec0a17a6a952, type: 3}
@@ -1280,22 +1280,22 @@ PrefabInstance:
     - target: {fileID: 8872923144081266877, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8872923144081266878, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
         type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8872923144081266878, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
         type: 3}
       propertyPath: m_BounceIntensity
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8872923144081266878, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
         type: 3}
       propertyPath: m_Shadows.m_Strength
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8872923144081266878, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
         type: 3}
