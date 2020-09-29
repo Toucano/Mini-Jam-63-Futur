@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ToggleData : MonoBehaviour
 {
@@ -24,15 +25,15 @@ public class ToggleData : MonoBehaviour
     {
         if (movementValue == movement.forward)
         {
-            this.GetComponentInChildren<Text>().text = "Go Forward by " + steps.ToString() + " blocks";
+            this.GetComponentInChildren<TextMeshProUGUI>().text = "Go Forward by " + steps.ToString() + " blocks";
         }
         if (movementValue == movement.turnRight)
         {
-            this.GetComponentInChildren<Text>().text = "Turn Right " + steps.ToString() + " times";
+            this.GetComponentInChildren<TextMeshProUGUI>().text = "Turn Right " + steps.ToString() + " times";
         }
         if (movementValue == movement.turnLeft)
         {
-            this.GetComponentInChildren<Text>().text = "Turn Left " + steps.ToString() + " times";
+            this.GetComponentInChildren<TextMeshProUGUI>().text = "Turn Left " + steps.ToString() + " times";
         }
     }
 }

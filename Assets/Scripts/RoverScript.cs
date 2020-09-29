@@ -15,6 +15,7 @@ public class RoverScript : MonoBehaviour
 
     [SerializeField] float movingDelay = 1f;
     [SerializeField] float turninDelay = 1f;
+    [SerializeField] float delayBetweenMovements = 1f;
     [SerializeField] bool dontAnimateMovement = false;
     [SerializeField] RotateMode rotateAnimation = RotateMode.Fast;
     
@@ -45,7 +46,7 @@ public class RoverScript : MonoBehaviour
         {
             currentDirection = transform.localEulerAngles;
             currentPosition = transform.position;
-            //Debug.Log(instruction);
+            //Debug.Log(currentDirection);
             if (instruction == "forward")
             {
                 if (IsMovingForwardValid())
@@ -78,7 +79,7 @@ public class RoverScript : MonoBehaviour
             {
                 movementSequence.Append(transform.DORotate(currentDirection + new Vector3(0, -90, 0), turninDelay, rotateAnimation));
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(delayBetweenMovements);
         }
     }
 
@@ -99,7 +100,7 @@ public class RoverScript : MonoBehaviour
         {
             if (hit.collider.tag == "border")
             {
-                cameraAnimations.SetTrigger("shakeCamera");
+                CinemachineShake.Instance.ShakeCamera(10f, .25f);
                 return false;
             }
         }

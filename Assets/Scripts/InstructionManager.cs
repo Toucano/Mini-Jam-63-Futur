@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class InstructionManager : MonoBehaviour
 {
@@ -22,12 +23,12 @@ public class InstructionManager : MonoBehaviour
     private void Update()
     {
         instructionsListDebug = instructionsList;
-        string result = "List contents: ";
-        foreach (var item in instructionsList)
-        {
-            result += item.ToString() + ", ";
-        }
-        Debug.Log(result);
+        //string result = "List contents: ";
+        //foreach (var item in instructionsList)
+        //{
+        //    result += item.ToString() + ", ";
+        //}
+        //Debug.Log(result);
     }
 
     public void OnClickToggle(bool toggleValue)
@@ -43,14 +44,17 @@ public class InstructionManager : MonoBehaviour
             {
                 instructionsList.Add(clickedToggleData.movementValue.ToString());
             }
-            clickedToggle.GetComponentInChildren<Text>().text = "Index of instruction : " + instructionsList.Count;
+            clickedToggle.GetComponentInChildren<TextMeshProUGUI>().text = "Index of instruction : " + instructionsList.Count;
         }
         if (toggleValue == false)
         {
-            Debug.Log(clickedToggleData.indexOfInstruction);
-            Debug.Log(steps);
-            instructionsList.RemoveRange(clickedToggleData.indexOfInstruction , steps);
-            clickedToggleData.indexOfInstruction = 0;
+            for (int i = clickedToggleData.indexOfInstruction; i < clickedToggleData.indexOfInstruction + steps; i++)
+            {
+                //Debug.Log("yay");
+                instructionsList[i] = "";
+            }
+            //instructionsList.RemoveRange(clickedToggleData.indexOfInstruction , steps);
+            //clickedToggleData.indexOfInstruction = 0;
             clickedToggleData.TextToggleToInstructionName();
         }
         instructionIndex = instructionsList.Count;

@@ -15,12 +15,22 @@ PrefabInstance:
     - target: {fileID: 8872923144081266878, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.5
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8872923144081266878, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
         type: 3}
       propertyPath: m_Shadows.m_Type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872923144081266878, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
+        type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872923144081266878, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8872923144081266879, guid: 0b9e5c0a84cebf54e8de6f8a0f9a7134,
         type: 3}
